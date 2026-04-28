@@ -1,0 +1,19 @@
+# 智能客服系统后端服务基础镜像
+FROM eclipse-temurin:17-jre-alpine
+
+LABEL maintainer="smart-cs"
+LABEL description="Smart Customer Service Backend Service"
+
+ENV TZ=Asia/Shanghai
+ENV JAVA_OPTS="-Xms256m -Xmx512m"
+
+RUN apk add --no-cache tzdata && \
+    cp /usr/share/zoneinfo/${TZ} /etc/localtime && \
+    echo "${TZ}" > /etc/timezone && \
+    apk del tzdata
+
+WORKDIR /app
+
+EXPOSE 8080
+
+ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar app.jar"]

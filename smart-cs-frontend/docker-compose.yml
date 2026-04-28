@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  user-chat:
+    build:
+      context: .
+      dockerfile: packages/user-chat/Dockerfile
+    container_name: smart-cs-user-chat
+    ports:
+      - "3001:80"
+    networks:
+      - smart-cs-network
+
+  admin-console:
+    build:
+      context: .
+      dockerfile: packages/admin-console/Dockerfile
+    container_name: smart-cs-admin
+    ports:
+      - "3003:80"
+    networks:
+      - smart-cs-network
+
+  agent-workspace:
+    build:
+      context: .
+      dockerfile: packages/agent-workspace/Dockerfile
+    container_name: smart-cs-agent
+    ports:
+      - "3002:80"
+    networks:
+      - smart-cs-network
+
+networks:
+  smart-cs-network:
+    external: true
