@@ -1,10 +1,8 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "rootDir": "src",
-    "outDir": "dist",
-    "target": "ES2022",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
     "moduleResolution": "bundler",
@@ -20,10 +18,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@smart-cs/shared": ["../../shared/src"],
-      "@smart-cs/shared/*": ["../../shared/src/*"]
+      "@shared/*": ["../../shared/*"]
     }
   },
   "include": ["src"],
-  "references": [{ "path": "../../shared" }]
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

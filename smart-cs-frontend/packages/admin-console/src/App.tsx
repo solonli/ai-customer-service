@@ -1,25 +1,47 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Layout } from './components/Layout';
-import { Dashboard } from './pages/Dashboard';
-import { UserManagement } from './pages/UserManagement';
-import { SystemConfig } from './pages/SystemConfig';
-import { Statistics } from './pages/Statistics';
-import './App.css';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './hooks/useAuth';
+import LoginPage from './pages/Login';
+import Layout from './layouts/MainLayout';
+import Dashboard from './pages/Dashboard';
+import Knowledge from './pages/Knowledge';
+import Ticket from './pages/Ticket';
+import User from './pages/User';
 
-const App: React.FC = () => {
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
+};
+
+const AppContent = () => {
+  const { isAuthenticated } = useAuth();
+  
+  if (!isAuthenticated) {
+    return <LoginPage />;
+  }
+  
   return (
-    <BrowserRouter>
+    <Layout>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Navigate to="/dashboard" replace />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="users" element={<UserManagement />} />
-          <Route path="statistics" element={<Statistics />} />
-          <Route path="system" element={<SystemConfig />} />
-        </Route>
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/knowledge" element={<Knowledge />} />
+        <Route path="/ticket" element={<Ticket />} />
+        <Route path="/user" element={<User />} />
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
-    </BrowserRouter>
+    </Layout>
+  );
+};
+
+const App = () => {
+  return (
+    <AuthProvider>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<AppContent />} />
+      </Routes>
+    </AuthProvider>
   );
 };
 
