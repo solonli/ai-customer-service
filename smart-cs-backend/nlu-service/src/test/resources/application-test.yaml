@@ -1,0 +1,23 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: nlu-service
+  profiles:
+    active: test
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+logging:
+  level:
+    com.smartcs: DEBUG
+    org.springframework: INFO
+
+dialogue:
+  confidence:
+    threshold: 0.85
+  transfer:
+    threshold: 0.70
