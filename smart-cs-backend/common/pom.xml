@@ -12,7 +12,6 @@
     <artifactId>common</artifactId>
     <packaging>pom</packaging>
     <name>Common Modules</name>
-    <description>公共模块父工程</description>
 
     <modules>
         <module>common-core</module>

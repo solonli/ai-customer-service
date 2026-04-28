@@ -1,18 +1,25 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ChatPage } from './pages/ChatPage';
+import { ConfigProvider, theme } from 'antd';
+import zhCN from 'antd/locale/zh_CN';
+import ChatWindow from './components/ChatWindow';
 import './App.css';
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <ConfigProvider
+      locale={zhCN}
+      theme={{
+        algorithm: theme.defaultAlgorithm,
+        token: {
+          colorPrimary: '#1890ff',
+          borderRadius: 6,
+        },
+      }}
+    >
       <div className="app">
-        <Routes>
-          <Route path="/" element={<ChatPage />} />
-          <Route path="/chat/:conversationId" element={<ChatPage />} />
-        </Routes>
+        <ChatWindow />
       </div>
-    </BrowserRouter>
+    </ConfigProvider>
   );
 };
 

@@ -7,7 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@smart-cs/shared': path.resolve(__dirname, '../../shared/src'),
+      '@shared': path.resolve(__dirname, '../../shared'),
     },
   },
   server: {
@@ -16,6 +16,10 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:8080',
         changeOrigin: true,
+      },
+      '/ws': {
+        target: 'ws://localhost:8080',
+        ws: true,
       },
     },
   },
