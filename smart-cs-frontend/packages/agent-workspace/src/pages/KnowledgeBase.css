@@ -1,0 +1,37 @@
+.knowledge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.knowledge-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.knowledge-search {
+  margin-bottom: 24px;
+}
+
+.knowledge-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.knowledge-meta .category {
+  color: #1890ff;
+  font-weight: 500;
+}
+
+.knowledge-meta .tags {
+  display: flex;
+  gap: 4px;
+}
+
+.knowledge-meta .view-count {
+  color: #999;
+  font-size: 12px;
+}

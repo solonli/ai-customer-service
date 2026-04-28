@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@smart-cs/shared": ["shared/src"],
+      "@smart-cs/shared/*": ["shared/src/*"]
+    }
+  },
+  "references": [
+    { "path": "./packages/user-chat" },
+    { "path": "./packages/agent-workspace" },
+    { "path": "./packages/admin-console" },
+    { "path": "./shared" }
+  ]
+}
